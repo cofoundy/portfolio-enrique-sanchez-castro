@@ -1,0 +1,70 @@
+---
+import { siteConfig } from "../config";
+const hasAwards = (siteConfig as any).awards && (siteConfig as any).awards.length > 0;
+const awards = (siteConfig as any).awards || [];
+---
+
+{hasAwards && (
+  <section
+    id="awards"
+    class="py-12 md:py-16"
+    style={`background-color: ${siteConfig.colors.surface}`}
+  >
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="mb-10 reveal-left">
+        <h2
+          class="text-3xl md:text-4xl font-bold"
+          style={`color: ${siteConfig.accentColor}; font-family: 'Cormorant Garamond', serif;`}
+        >
+          Awards & Recognition
+        </h2>
+        <div
+          class="w-16 h-1 mt-3 rounded-full"
+          style={`background-color: ${siteConfig.colors.accent}`}
+        ></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {awards.map((award: any, index: number) => (
+          <div
+            class={`reveal stagger-${Math.min(index + 1, 6)} card-hover p-5 rounded-xl`}
+            style={`background-color: white; border: 1px solid ${siteConfig.colors.primary}20`}
+          >
+            <div class="flex items-start gap-3">
+              <div
+                class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                style={`background-color: ${siteConfig.colors.accent}15`}
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  style={`color: ${siteConfig.colors.accent}`}
+                >
+                  <path fill-rule="evenodd" d="M5 2a2 2 0 00-2 2v14l3.5-2 3.5 2 3.5-2 3.5 2V4a2 2 0 00-2-2H5zm4.707 3.707a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L8.414 9H10a3 3 0 013 3v1a1 1 0 102 0v-1a5 5 0 00-5-5H8.414l1.293-1.293z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h3
+                  class="text-base font-semibold"
+                  style={`color: ${siteConfig.accentColor}`}
+                >
+                  {award.title}
+                </h3>
+                <span
+                  class="text-xs font-medium"
+                  style={`color: ${siteConfig.colors.accent}`}
+                >
+                  {award.year}
+                </span>
+                <p class="text-sm text-gray-600 mt-1">
+                  {award.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

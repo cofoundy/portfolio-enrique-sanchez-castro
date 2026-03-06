@@ -1,0 +1,135 @@
+---
+import { siteConfig } from "../config";
+---
+
+<!-- Top Bar with Shimmer -->
+<div class="w-full h-3 bar-shimmer"></div>
+
+<section
+  id="hero"
+  class="relative py-16 md:py-20 lg:py-24"
+  style={`background-color: ${siteConfig.colors.surfaceLight}`}
+>
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <!-- Main Hero Content: 2-column grid -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <!-- Photo Column -->
+      <div class="md:col-span-4 flex justify-center md:justify-start order-2 md:order-1" style="overflow: visible;">
+        <div class="relative hero-photo" style="overflow: visible;">
+          <!-- Decorative background glow -->
+          <div
+            class="absolute -inset-4 rounded-2xl"
+            style={`background: linear-gradient(135deg, ${siteConfig.colors.primary}15 0%, ${siteConfig.colors.accent}15 100%)`}
+          ></div>
+          <div class="relative rounded-2xl shadow-2xl overflow-visible" style={`border: 3px solid ${siteConfig.colors.accent};`}>
+            <img
+              src="/profile.jpg"
+              alt={siteConfig.name}
+              class="w-56 md:w-64 lg:w-72 rounded-2xl"
+              style={`object-fit: contain; object-position: center top; display: block; width: 100%; height: auto;`}
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Text Content Column -->
+      <div class="md:col-span-8 order-1 md:order-2 text-center md:text-left">
+        <h1
+          class="hero-title text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight"
+          style={`color: ${siteConfig.accentColor}; font-family: 'Cormorant Garamond', serif;`}
+        >
+          {siteConfig.name}
+        </h1>
+
+        <!-- Separator bar -->
+        <div
+          class="w-24 h-1.5 my-4 mx-auto md:mx-0 rounded-full"
+          style={`background-color: ${siteConfig.colors.accent}`}
+        ></div>
+
+        <!-- Title -->
+        <p
+          class="hero-subtitle text-xl md:text-2xl font-medium mb-4"
+          style={`color: ${siteConfig.colors.primary}; font-family: 'Raleway', sans-serif;`}
+        >
+          {siteConfig.title}
+        </p>
+
+        <!-- Tagline -->
+        {siteConfig.tagline && (
+          <p
+            class="hero-description text-lg md:text-xl text-gray-700 leading-relaxed mb-8 max-w-xl mx-auto md:mx-0"
+            style="font-family: 'Montserrat', sans-serif;"
+          >
+            {siteConfig.tagline}
+          </p>
+        )}
+
+        <!-- CTA Button -->
+        <div class="hero-cta flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-8">
+          <a
+            href={`mailto:${siteConfig.social?.email}?subject=${siteConfig.cta?.emailSubject || 'Contact'}`}
+            class="btn-hover inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white font-semibold text-lg shadow-lg"
+            style={`background-color: ${siteConfig.colors.accent}`}
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            {siteConfig.cta?.buttonText || "Get in Touch"}
+          </a>
+        </div>
+
+        <!-- Social Links -->
+        <div class="hero-social flex gap-3 justify-center md:justify-start">
+          {siteConfig.social?.email && (
+            <a
+              href={`mailto:${siteConfig.social.email}`}
+              class="icon-hover w-11 h-11 rounded-full flex items-center justify-center"
+              style={`background-color: ${siteConfig.accentColor}; color: white`}
+              aria-label="Email"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </a>
+          )}
+          {siteConfig.social?.linkedin && (
+            <a
+              href={siteConfig.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="icon-hover w-11 h-11 rounded-full flex items-center justify-center"
+              style={`background-color: ${siteConfig.accentColor}; color: white`}
+              aria-label="LinkedIn"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats / Trust Bar -->
+    {siteConfig.stats && siteConfig.stats.length > 0 && (
+      <div
+        class="hero-stats mt-16 py-6 px-8 rounded-2xl grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8"
+        style={`background-color: ${siteConfig.colors.primaryDark}08; border: 1px solid ${siteConfig.colors.primaryDark}15`}
+      >
+        {siteConfig.stats.map((stat, index) => (
+          <div class={`text-center stat-number`}>
+            <div
+              class="text-2xl md:text-3xl font-bold"
+              style={`color: ${siteConfig.colors.accent}`}
+            >{stat.value}</div>
+            <div class="text-xs md:text-sm text-gray-600 font-medium">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<!-- Bottom Bar with Shimmer -->
+<div class="w-full h-3 bar-shimmer"></div>
