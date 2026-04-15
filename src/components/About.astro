@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from "../config";
+const hasEducation = siteConfig.education && siteConfig.education.length > 0;
 ---
 
 <section
@@ -8,30 +9,28 @@ import { siteConfig } from "../config";
   style={`background-color: ${siteConfig.colors.surface}`}
 >
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
-    <!-- 3-column layout: Title | Bio | Pull Quote -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-      <!-- Title Column -->
-      <div class="lg:col-span-3 reveal-left">
-        <h2
-          class="text-3xl md:text-4xl font-bold"
-          style={`color: ${siteConfig.accentColor}; font-family: 'Cormorant Garamond', serif;`}
-        >
-          About Me
-        </h2>
-        <div
-          class="w-16 h-1 mt-3 rounded-full"
-          style={`background-color: ${siteConfig.colors.accent}`}
-        ></div>
-      </div>
+    <!-- Master Section Title -->
+    <div class="mb-10 reveal-left">
+      <h2
+        class="text-3xl md:text-4xl font-semibold"
+        style={`color: ${siteConfig.accentColor};`}
+      >
+        About Me
+      </h2>
+      <div
+        class="w-16 h-1 mt-3 rounded-full"
+        style={`background-color: ${siteConfig.colors.accent}`}
+      ></div>
+    </div>
 
-      <!-- Content Column -->
-      <div class="lg:col-span-5 reveal stagger-1">
+    <!-- 7.1 About Me -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-12">
+      <div class="lg:col-span-8 reveal stagger-1">
         <p class="text-base md:text-lg text-gray-700 leading-relaxed">
           <Fragment set:html={siteConfig.aboutMe} />
         </p>
       </div>
 
-      <!-- Quote Column -->
       {siteConfig.quote && (
         <div class="lg:col-span-4 reveal-scale stagger-2">
           <blockquote
@@ -39,8 +38,8 @@ import { siteConfig } from "../config";
             style={`background-color: ${siteConfig.colors.accent}15; border-left: 4px solid ${siteConfig.colors.accent}`}
           >
             <p
-              class="text-lg md:text-xl font-medium italic"
-              style={`color: ${siteConfig.accentColor}; font-family: 'Cormorant Garamond', serif;`}
+              class="text-lg font-medium italic"
+              style={`color: ${siteConfig.accentColor};`}
             >
               "{siteConfig.quote.text}"
             </p>
@@ -52,13 +51,58 @@ import { siteConfig } from "../config";
       )}
     </div>
 
-    <!-- Skills -->
-    <div class="mt-10 pt-8 border-t reveal stagger-3" style={`border-color: ${siteConfig.colors.primary}20`}>
+    <!-- 7.2 Education (subsection inside About Me) -->
+    {hasEducation && (
+      <div class="mb-12 pt-8 border-t reveal stagger-2" style={`border-color: ${siteConfig.colors.primary}20`}>
+        <h3
+          class="text-xl md:text-2xl font-semibold mb-6"
+          style={`color: ${siteConfig.accentColor};`}
+        >
+          Education
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          {siteConfig.education.map((edu, index) => (
+            <div
+              class={`reveal stagger-${Math.min(index + 1, 6)} card-hover p-5 rounded-xl`}
+              style={`background-color: white; border: 1px solid ${siteConfig.colors.primary}20`}
+            >
+              <h4
+                class="text-base font-semibold mb-1"
+                style={`color: ${siteConfig.accentColor}`}
+              >
+                {edu.degree}
+              </h4>
+              <p
+                class="text-sm font-medium mb-2"
+                style={`color: ${siteConfig.colors.accent}`}
+              >
+                {edu.school}
+              </p>
+              <p class="text-xs text-gray-500 mb-3">{edu.dateRange}</p>
+              <ul class="space-y-1.5">
+                {edu.achievements.slice(0, 3).map((a) => (
+                  <li class="flex items-start text-xs text-gray-600">
+                    <span
+                      class="inline-block w-1.5 h-1.5 rounded-full mt-1.5 mr-2 flex-shrink-0"
+                      style={`background-color: ${siteConfig.colors.accent}`}
+                    />
+                    <span>{a}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- 7.3 Core Expertise -->
+    <div class="pt-8 border-t reveal stagger-3" style={`border-color: ${siteConfig.colors.primary}20`}>
       <h3
-        class="text-sm font-semibold uppercase tracking-wider mb-4"
-        style={`color: ${siteConfig.colors.primary}`}
+        class="text-xl md:text-2xl font-semibold mb-6"
+        style={`color: ${siteConfig.accentColor};`}
       >
-        Expertise
+        Core Expertise
       </h3>
       <div class="flex flex-wrap gap-2">
         {siteConfig.skills.map((skill, index) => (

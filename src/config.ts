@@ -1,19 +1,21 @@
 export const siteConfig = {
-  name: "Enrique E. Sánchez-Castro",
-  title: "PhD Candidate · Stem Cell Biology · Washington University in St. Louis",
-  description: "Enrique Sánchez-Castro — PhD Candidate in Developmental, Regenerative & Stem Cell Biology at WashU. Research on β-cell differentiation for diabetes therapy. Nobel Prize Dialogue delegate.",
-  accentColor: "#1A4F6E",
+  name: "Eduardo \"Ed\" Sánchez-Castro",
+  title: "PhD Candidate in Developmental, Stem Cell and Regenerative Biology at the Millman Lab",
+  description: "Eduardo \"Ed\" Sánchez-Castro — PhD Candidate at Washington University in St. Louis investigating in vitro pancreatic islet differentiation for diabetes therapy.",
+  accentColor: "#003366",
 
   colors: {
-    primaryDark: "#1A4F6E",
-    primary: "#27668C",
-    primaryLight: "#8AABB8",
-    accent: "#D97C2B",
-    surface: "#EFF3F5",
-    surfaceLight: "#F7F9FA",
+    primaryDark: "#002244",
+    primary: "#003366",
+    primaryLight: "#335c85",
+    accent: "#ffa500",
+    surface: "#f3f6fa",
+    surfaceLight: "#f9fbfd",
   },
 
-  tagline: "From mentoring diabetic youth to engineering β-cells — a scientist driven by purpose.",
+  // Highlight: link to manuscript on bioRxiv
+  tagline: "Developed the first digital twin of in vitro pancreatic islet differentiation: a multiomic framework for cell fate prediction.",
+  taglineLink: "https://www.biorxiv.org/",
 
   stats: [
     { value: "4", label: "Publications" },
@@ -24,28 +26,23 @@ export const siteConfig = {
 
   quote: {
     text: "Research should serve people. Every experiment in my lab connects back to a child I once mentored who was learning to live with diabetes.",
-    author: "Enrique Sánchez-Castro",
+    author: "Eduardo \"Ed\" Sánchez-Castro",
   },
 
-  // Research Focus (replaces Services)
+  // Research Focus — emphasis on Diabetes (rendered larger), Science Communication removed
   services: [
     {
       icon: "heart",
-      title: "Diabetes & β-Cell Engineering",
+      title: "Diabetes",
       description: "Improving the generation and function of insulin-producing pancreatic β-cells from human pluripotent stem cells for diabetes therapy.",
       items: ["Stem cell differentiation", "In vitro & computational approaches", "Millman Lab, WashU", "HIRN DePOSIT Award"],
+      featured: true,
     },
     {
       icon: "shield",
-      title: "Global Health & Policy",
+      title: "Global Health",
       description: "Bridging biotechnology and health policy to address infectious diseases and strengthen healthcare systems in Latin America.",
       items: ["Malaria burden in Peru (Lancet)", "COVID-19 molecular diagnostics", "Genomic surveillance", "Health policy planning"],
-    },
-    {
-      icon: "academic",
-      title: "Science Communication & Leadership",
-      description: "Building frameworks for student representation and making science accessible to broader audiences.",
-      items: ["DBBS Student Advisory Committee", "Ciencia Papaya YouTube channel", "Nobel Prize Dialogue delegate", "80+ journal clubs coordinated"],
     },
   ],
 
@@ -59,18 +56,25 @@ export const siteConfig = {
   social: {
     email: "e.sanchezcastro@wustl.edu",
     linkedin: "https://linkedin.com/in/ed-sanchez-castro",
+    scholar: "https://scholar.google.com/citations?user=rV8rKY4AAAAJ&hl=es",
   },
 
   aboutMe:
-    "I'm a PhD candidate at Washington University in St. Louis, where I research how to improve insulin-producing β-cells derived from stem cells — work that could one day transform diabetes treatment. My journey in science started early: at age 14, I began mentoring children newly diagnosed with type 1 diabetes through <strong>ADINA</strong> in Peru, an experience that shaped my commitment to purpose-driven research.<br><br>Beyond the lab, I've served as <strong>Senior Director of the DBBS Student Advisory Committee</strong>, delivering 30+ programs reaching 1,000+ attendees, and was selected by the <strong>Peruvian National Academy of Sciences</strong> as a delegate to the Nobel Prize Dialogue. I believe that great science happens when we build inclusive communities and communicate our discoveries with clarity and passion.",
+    "I am a PhD candidate at Washington University in St. Louis, where I investigate how to improve stem cell-derived insulin-producing β-cells by understanding and directing cell fate during differentiation. My research seeks to advance cell replacement strategies for diabetes and contribute to the development of more effective therapies.<br><br>My scientific journey has been profoundly shaped by my personal experience with type 1 diabetes, diagnosed when I was 12 years old. This life-changing event inspired my commitment to finding better treatments and to raising awareness about the disease. I earned my Bachelor of Science in Genetics and Biotechnology from the Universidad Nacional Mayor de San Marcos in 2019 and later completed a Master's in Health Policies in 2022. Together, these experiences have allowed me to approach biomedical research from both a scientific and a patient-centered perspective.<br><br>Beyond the lab, I am passionate about service, mentorship, and communication. I have worked to support children with diabetes in Peru, contribute to student leadership across the academic communities I have been part of, and promote science communication efforts that bring scientific knowledge closer to the public.",
 
   skills: [
     "Stem Cell Biology",
     "Molecular Genetics",
-    "Flow Cytometry",
-    "Bioinformatics",
-    "NGS Analysis",
+    "Single-Cell Multiomics",
     "Computational Biology",
+    "Bioinformatics",
+    "Single-Cell RNA-seq",
+    "Single-Cell ATAC-seq",
+    "Flow Cytometry",
+    "qPCR",
+    "ELISA",
+    "Glucose-Stimulated Insulin Secretion",
+    "Health Policy",
     "Science Communication",
     "Student Governance",
   ],
@@ -103,6 +107,7 @@ export const siteConfig = {
     },
   ],
 
+  // Combined Outreach & Leadership (Experience entries + Community entries unified)
   experience: [
     {
       company: "Washington University in St. Louis",
@@ -204,20 +209,8 @@ export const siteConfig = {
     },
   ],
 
-  // Custom: Community & Outreach
+  // Custom: Community & Outreach (rendered together with Experience under "Outreach & Leadership")
   community: [
-    {
-      title: "COVID-19 Molecular Diagnostics Trainer",
-      org: "Peruvian National Institute of Health (INS)",
-      period: "2021–2022",
-      description: "Trained laboratory personnel across Peru in molecular diagnosis of SARS-CoV-2",
-    },
-    {
-      title: "Clinical Biologist, SERUMS",
-      org: "Peru Rural Health Service",
-      period: "2021–2022",
-      description: "Delivered clinical laboratory and telehealth services in rural areas during COVID-19",
-    },
     {
       title: "Founder, \"Ciencia Papaya\"",
       org: "YouTube Science Channel",
@@ -229,6 +222,12 @@ export const siteConfig = {
       org: "Peruvian Assoc. of Diabetes in Children",
       period: "2009–2014",
       description: "Mentored newly diagnosed youth with type 1 diabetes and their families",
+    },
+    {
+      title: "Clinical Biologist, SERUMS",
+      org: "Peru Rural Health Service",
+      period: "2021–2022",
+      description: "Delivered clinical laboratory and telehealth services in rural areas during COVID-19",
     },
   ],
 };

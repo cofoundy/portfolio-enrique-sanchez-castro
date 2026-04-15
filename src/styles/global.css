@@ -20,15 +20,57 @@
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.005em;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .font-accent {
-  font-family: 'Cormorant', serif;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+/* Override any inline serif fonts left in components */
+[style*="Cormorant"], [style*="Raleway"], [style*="Montserrat"] {
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DNA OSCILLATING BACKGROUND ELEMENT
+   ═══════════════════════════════════════════════════════════ */
+
+@keyframes dnaFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+}
+
+@keyframes dnaSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes dnaPulse {
+  0%, 100% { opacity: 0.08; }
+  50% { opacity: 0.18; }
+}
+
+.dna-bg {
+  position: absolute;
+  pointer-events: none;
+  animation: dnaFloat 6s ease-in-out infinite, dnaPulse 4s ease-in-out infinite;
+  z-index: 0;
+}
+
+.dna-strand path {
+  stroke-dasharray: 4 4;
+  animation: dnaSpin 30s linear infinite;
+  transform-origin: center;
 }
 
 /* ═══════════════════════════════════════════════════════════

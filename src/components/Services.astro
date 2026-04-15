@@ -23,15 +23,27 @@ const iconPaths: Record<string, string> = {
 
   <section
     id="services"
-    class="py-16 md:py-20"
+    class="relative py-16 md:py-20 overflow-hidden"
     style="background-color: white"
   >
-    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <!-- Subtle DNA accent -->
+    <svg
+      class="dna-bg dna-strand hidden md:block"
+      style="top: 12%; left: 2%; width: 90px; height: 180px; animation-delay: -3s;"
+      viewBox="0 0 100 200"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path d="M20 0 Q 50 25 80 50 Q 50 75 20 100 Q 50 125 80 150 Q 50 175 20 200" stroke={siteConfig.colors.primary} stroke-width="1.5"/>
+      <path d="M80 0 Q 50 25 20 50 Q 50 75 80 100 Q 50 125 20 150 Q 50 175 80 200" stroke={siteConfig.colors.accent} stroke-width="1.5"/>
+    </svg>
+
+    <div class="relative max-w-6xl mx-auto px-6 lg:px-8" style="z-index: 1;">
       <!-- Header -->
       <div class="text-center mb-12 reveal">
         <h2
-          class="text-3xl md:text-4xl font-bold mb-4"
-          style={`color: ${siteConfig.accentColor}; font-family: 'Cormorant Garamond', serif;`}
+          class="text-3xl md:text-4xl font-semibold mb-4"
+          style={`color: ${siteConfig.accentColor};`}
         >
           Research Focus
         </h2>
@@ -41,19 +53,19 @@ const iconPaths: Record<string, string> = {
         ></div>
       </div>
 
-      <!-- Service Cards -->
+      <!-- Service Cards: Diabetes featured (2 cols), Global Health (1 col) -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-        {siteConfig.services.map((service, index) => (
+        {siteConfig.services.map((service: any, index) => (
           <div
-            class={`reveal stagger-${index + 1} group card-hover p-8 rounded-2xl text-center`}
-            style={`background-color: ${siteConfig.colors.surfaceLight}; border: 1px solid ${siteConfig.colors.primaryDark}10`}
+            class={`reveal stagger-${index + 1} group card-hover p-8 rounded-2xl text-center ${service.featured ? 'md:col-span-2' : 'md:col-span-1'}`}
+            style={`background-color: ${siteConfig.colors.surfaceLight}; border: ${service.featured ? '2px' : '1px'} solid ${service.featured ? siteConfig.colors.accent : siteConfig.colors.primaryDark + '10'}`}
           >
             <div
-              class="w-16 h-16 mx-auto mb-6 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+              class={`mx-auto mb-6 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 ${service.featured ? 'w-20 h-20' : 'w-16 h-16'}`}
               style={`background-color: ${siteConfig.colors.accent}15`}
             >
               <svg
-                class="w-8 h-8"
+                class={service.featured ? 'w-10 h-10' : 'w-8 h-8'}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -64,19 +76,19 @@ const iconPaths: Record<string, string> = {
             </div>
 
             <h3
-              class="text-xl font-bold mb-3"
-              style={`color: ${siteConfig.accentColor}; font-family: 'Raleway', sans-serif;`}
+              class={`font-semibold mb-3 ${service.featured ? 'text-2xl md:text-3xl' : 'text-xl'}`}
+              style={`color: ${siteConfig.accentColor};`}
             >
               {service.title}
             </h3>
 
-            <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+            <p class={`text-gray-600 leading-relaxed mb-6 ${service.featured ? 'text-base md:text-lg max-w-2xl mx-auto' : 'text-sm'}`}>
               <Fragment set:html={service.description} />
             </p>
 
-            <ul class="space-y-2 text-left">
-              {service.items.map((item) => (
-                <li class="flex items-center gap-2 text-sm text-gray-700">
+            <ul class={`space-y-2 ${service.featured ? 'inline-block text-left' : 'text-left'}`}>
+              {service.items.map((item: string) => (
+                <li class={`flex items-center gap-2 text-gray-700 ${service.featured ? 'text-base' : 'text-sm'}`}>
                   <svg
                     class="w-4 h-4 flex-shrink-0"
                     fill="currentColor"

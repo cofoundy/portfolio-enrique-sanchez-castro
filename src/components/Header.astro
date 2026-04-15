@@ -3,7 +3,7 @@ import { siteConfig } from "../config";
 
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
-const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+const hasAwards = (siteConfig as any).awards && (siteConfig as any).awards.length > 0;
 const hasServices = siteConfig.services && siteConfig.services.length > 0;
 ---
 
@@ -23,7 +23,7 @@ const hasServices = siteConfig.services && siteConfig.services.length > 0;
           class="link-underline text-sm font-medium transition-colors duration-300"
           style={`color: ${siteConfig.accentColor}`}
         >
-          About
+          About Me
         </a>
       </li>
       {hasServices && (
@@ -51,22 +51,22 @@ const hasServices = siteConfig.services && siteConfig.services.length > 0;
       {hasExperience && (
         <li>
           <a
-            href="#experience"
+            href="#outreach"
             class="link-underline text-sm font-medium transition-colors duration-300"
             style={`color: ${siteConfig.accentColor}`}
           >
-            Leadership
+            Outreach & Leadership
           </a>
         </li>
       )}
-      {hasEducation && (
+      {hasAwards && (
         <li>
           <a
-            href="#education"
+            href="#awards"
             class="link-underline text-sm font-medium transition-colors duration-300"
             style={`color: ${siteConfig.accentColor}`}
           >
-            Education
+            Awards & Recognition
           </a>
         </li>
       )}
